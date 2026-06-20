@@ -34,3 +34,23 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Testing
+
+Tested with Aspen HYSYS/Aspen Plus errors covering convergence, property package,
+and recycle loop issues.
+
+Four representative error types were manually tested and verified against real
+Aspen HYSYS/Plus troubleshooting experience:
+
+- Recycle loop convergence failure (Wegstein/Broyden tear stream issues)
+- Flash calculation failure (critical point / missing binary interaction parameters)
+- Henry's Law temperature range warning (fluid package limitations)
+- Distillation column (RadFrac) convergence failure (reflux ratio / reboiler duty)
+
+All four diagnoses were assessed as technically correct — using accurate Aspen
+terminology and real software navigation paths — by a Chemical Engineering student
+with hands-on HYSYS/Aspen Plus experience. Full results in `TEST_RESULTS.md`.
+
+A basic automated test fixture covering the success path and input validation is
+included at `app/api/interpret/route.test.ts`.
